@@ -1,0 +1,113 @@
+Class 'Main' is public, should be declared in a file named 'Main.java'
+와 자바 안돌아감 어쩌냐
+
+깃 에러 403
+메일주소 이름 잘못 씀;;
+************
+깃을 클론받을 거면 이걸 준비해라.
+***열어주시면 니 메일로 초대장 갈껀데 그거 확인 안누르면 넌 레포지토리 접근 권한 못가짐 
+이거때문에 시간 날려먹었으니 진짜 제발 꼭 뇌 주름에 새겨놓도록
+
+1. 우선 레포지토리 열어주신 분의 워킹 레포지토리 깃 url을 카피함
+2. 내 컴퓨터에 워킹 파일을 만들어놓고 경로지정
+고급옵션에 main으로 맞춰놈
+클론
+
+--여기서부터 순서 모르겟네
+파일 확인(풀 받아야 되나)
+내 컴퓨터에 워킹파일로 지정된 곳에 변경사항 만들어놓고 커밋-푸시
+열어주신 분의 레포 가서 잘 올라갔나 확인 
+이제 내 브랜치 열고 (웬만하면 feature/브런치 이름으로 해놔라) 작업 시작
+
+**************************
+자바의 변수와 메서드 약간 이해
+클래스는 변수와 메서드를 가지고 있어야 한다
+ 
+class Animal {
+	String = name; ----이라는 변수를 갖고
+
+	public void cry() {
+		sout(name + " is crying")  ----이라는 매서드(함수/작업) 을 수행함
+	}
+}
+
+예제******************************
+
+class Animal {
+    String name;
+
+    public void cry() {
+        System.out.println(name + "is crying");
+    }
+}
+
+class Dog extends Animal {
+    Dog(String name) {
+        this.name = name;
+    }
+    public void swim() {
+        System.out.println(name +"is swimming");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog("coco");
+        dog.cry();
+        dog.swim();
+
+        Animal dog2 = new Dog("미미");
+        dog2.cry();
+//        dog2.swim();
+    }
+}
+
+
+오버로딩********************************************
+    오버로딩은 
+	1. 매서드 이름이 동일해야 하며, 
+    	2. 매개변수의 갯수 혹은 타입이 달라야 함
+
+    int add (int x, int y, int z) {
+        return x+y+z;
+    }
+    long add (int a, int b, int c) {
+        
+    } --- 이경우는 매서드 이름은 같으나 매개변수의 갯수가 같고 타입 역시 같음
+	x,y,z 나 a,b,c 가 중요한 게 아님 타입과 순서, 갯수만 봐라
+
+오버라이딩************************************************
+자식이 부모 등에 타 부모의 함수를 덮어버림 (예제 설명)
+
+class Animal {         <----------------- 부모 클래스
+    String name;
+    String color;
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public void cry() {        <----------------- 부모 매서드/ 이름 cry
+        System.out.println(name+" is crying");
+    }
+}
+
+class Dog extends Animal {
+
+    public Dog(String name) {   <----------------- 부모 변수 고대로 상속받음
+        super(name);
+    }
+
+    @Override
+    public void cry() {      <----------------- 근데, 자식 매서드도 이름이 cry
+        System.out.println(name+" is barking");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // overloading ex   <----------------- 이 경우, cry를 호출하면 어떤 매서드가 수행될까?
+    Animal dog = new Dog("코코");
+        dog.cry();    <----------------- 자식 매서드가 수행된다~ 부모 이기는 자식은 없다~
+    }
+}
+ 

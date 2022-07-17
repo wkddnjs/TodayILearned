@@ -1,0 +1,45 @@
+<할일>
+***sa쓰기*** 
+스터디 사이클
+
+몇번까지 풀 지 정하고, 문제 별 담당자
+오늘 8번까지 풀기로 약속, 나는 3/8번을 풀고 발표 (자기거만 풀고 끝내지 않기)
+안풀리면 답지 봐도 무방 
+
+챙겨볼거 : 생활코딩 자바 / 지급된 인강 
+스프링 할당 코드 쓰면 체크하기  
+---------------------------------------------------------
+<오류코드>
+cannot assign a value to final variable finalNumber finalNumber = 2;
+gradlew wrapper --gradle-version
+error: unmappable character for encoding MS949 한글 안됨ㅋ
+[I@6bc7c054 뭔값임? - import java.util.Arrays; 임포팅 한 후 alt enter로 객체를 tostring으로 감싸서 출력 
+
+<배운 거>
+*웬만하면finalNumber이런 케멀 캐이스로써라
+변수와 상수(맨 앞에 숫자,특수문자 안됨/)
+변수 : 컴퓨터 메모리를 가르키는 변수 (빈 박스)
+상수 : final로 선언(접근 제어자)
+
+파이널 넘버는 다른 값으로 재 할당이 안됨 (고정)
+
+자료형의 종류 (primitiveType(기본)과 referanceType(참조))
+기본 : 숫자 문자 논리 바이트
+
+숫자는 
+int (+-20억) 많이씀
+short (32767~-32768까지)
+long
+flort 소수점 (뒤에 대문자F)
+double 소주점 (뒤에 없어도 됨)
+
+문자는 
+char c='A' (한 문자만)
+
+논리는 
+트루펄스
+
+바이트
+문자열을 컴퓨터데이터로 표현 (알파벳D를 출력하면 아스키코드로 변환되어 출력)
+
+-참조 자료형은 자바의 인스턴스를 가리킬 수 있는 객체(기본 말고 모든 것)

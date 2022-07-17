@@ -1,0 +1,8 @@
+오늘의 에러: Uncaught TypeError: Cannot set properties of null (setting 'disabled')
+jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode().
+
+피드백
+아이디 패스워드 형식 세팅(특수문자 대문자 들어가야 한다) 
+비밀번호 더블체크
+
+입찰 시 숫자 맥시멈 값(이상 숫자가 나올 경우 그 가격으로 막아버린다)
