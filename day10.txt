@@ -1,0 +1,46 @@
+SQL 문
+
+
+CREATE TABLE IF NOT EXISTS courses (
+    id bigint(5) NOT NULL AUTO_INCREMENT, 
+    title varchar(255) NOT NULL,
+    tutor varchar(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+	bigint 는 자바에서 Long
+	NOT NULL은 필수로 들어가는 값
+	varchar는 스트링
+	PRIMARY KEY(id) 데이터를 구분해주는 유일한 값 - id라는 친구를 / 구분할 수 있는 키로 활용하겠다~
+	AUTO INCREMENT - 자동으로 담 숫자 부여해라
+
+
+INSERT INTO courses (title, tutor) VALUES
+    ('웹개발의 봄, Spring', '남병관'), ('웹개발 종합반', '이범규');
+
+	insert 일단 넣어달라는 뜻 into courses 코시즈에 (title, tutor) - 쌍이 딱딱 맞게(첫번쨰 타이틀, 두번째 튜터)
+	VALUES 그 값은 ('웹개발의 봄, Spring', '남병관') 이거랑 ('웹개발 종합반', '이범규')이거 넣어달란 뜻
+
+
+SELECT * FROM courses;
+	조회하는 거 *은 다 가져와라
+
+--------------------------------------------------------------------------
+sql문법까지 붙잡고있으면 개발자는 하루종일 SQL만 매달라고 있을것 - 그래서 나온 게 JPA!!
+-SQL문 자동 번역(자바로)
+
+대충 이런 식
+repository.save(new Customer("jack","henry"))
+
+SQL의 테이블은 spring의 도메인
+SQL은 spring의 리포지토리
+
+자바에서
+@NoArgsConstructor //기본 생성자가 없으니 좀 만들어 줘라
+@Entity // 테이블임을 나타냄.
+@Column(nullable = false) 컬럼(열)을 만들어주는데, 거기에 널값은 안들어가있게(false) 해라
+@Id // ID 값, Primary Key로 사용하겠다 // DB에서 쓰는거니까 따로 getter,setter설정 안함
+나머지 요소들은 게터 설정 //세터는 리포지토리에서 자동으로 해줌
+
+public interface CourseRepository(코스에 관한 리포지토리이다) extends(뒤에 걸 상속받는다) JpaRepository<Course, Long(아이디의 자료형태)>(이걸 가져와서) {
+}

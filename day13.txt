@@ -1,0 +1,38 @@
+2주차 강의 다시듣기
+
+현업에서는 왜 데이터를 주고 받을 때 DTO를 사용하는 것인지? - 데이터를 직접 수정하게 되면 나중에 큰일나니까
+
+개념
+Controller
+service
+repository
+-----------
+Dto
+Jpa
+
+타인 라인
+1. resourses의 application.properties에서 h2 데이터베이스를 쓴다고 선언
+	#스프링의 h2웹 콘솔이 보이게 해줘
+	spring.h2.console.enabled=true
+	#스프링의 데이터베이스는 h2를 쓸꺼야
+	spring.datasource.url=jdbc:h2:mem:testdb;MODE=MYSQL
+
+spring의 도메인(entity)은 DB의 테이블
+리포지토리는 디비의 SQL과 같다 / 리포지토리에 써있는 코드가 jpa코드를 사용하는 것과 똑같음
+
+도메인과 리포지토리는 모델이라는 패키지로 묶는다. 왜? 기능에 연관성이 있나? // 내 파일트리에서 모델의 역할은 com.sparta.week02_2nd인듯
+ - 테이블과 연동되는 클래스는 도메인에
+
+내 파일에 domain이라는 패키지를 만들고, 거기에 Course와 CourseRepository(얘는 인터페이스) 클래스를 담았다.
+Course class속 코드는 H2 데이터베이스에서 했던 아래 구문과 정확히 똑같음
+	CREATE TABLE~
+	id ~
+	title~
+	tutor~
+	PRIMARY KEY(id);
+course 클래스에서 변수선언 해주는 듯
+update도 함수 선언은 course 클래스 내부에다 해줌 
+그리고 service라는 패키지를 따로 만들고 그 안에 서비스를 넣어준대
+
+controller 패키지 만듦
+api 들어감 // CRUD api

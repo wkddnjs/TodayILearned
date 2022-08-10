@@ -1,0 +1,16 @@
+JPA에서 많이 쓰는 것 - 데이터 관리는 입출력/ 수정 시간이 중요
+
+@MappedSuperclass // 상속했을 때, 컬럼으로 인식하게 합니다.
+@EntityListeners(AuditingEntityListener.class) // 생성/수정 시간을 자동으로 반영하도록 설정
+public abstract class Timestamped {  //추상 메서드(상속으로 쓰는 것만 가능)
+
+    @CreatedDate // 생성일자임을 나타냅니다.
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate // 마지막 수정일자임을 나타냅니다.
+    private LocalDateTime modifiedAt;
+}  
+
+-------------------------------------------------------
+
+돌리는 곳에 가서 @EnableJpaAuditing 까지 붙여줘야 함

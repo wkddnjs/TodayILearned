@@ -1,0 +1,55 @@
+안녕자바 1장 02 자바의 특징까지 읽음
+============================
+
+스프링 3계층
+controller service repository 설계 이유의 파악
+스프링 mvc에 대한 이해
+스프링 IoC / DI 이해
+
+api 설계 샘플
+
+기능                                   |  매서드  | URL                   | 반환
+-----------------------------------------------------------------------------------
+키워드로 상품 검색                 |   GET    | /api/search           | List<ItemDTO>
+관심상품 등록하기                  |  POST   | /api/product         | Product
+관심상품 희망 최저가 업데이트   |   PUT   | /api/product {id}    | id
+
+==============
+spring security 
+spring 처음 실행할 때 spring security를 같이 집어넣어주는 방법
+
+기존의 프로젝트일 경우
+build.gradle 안에 dependencies에 
+implementation 'org.springframework.boot:spring-boot-starter-security'
+testImplementation 'org.springframework.security:spring-security-test' 확인
+
+security 패키지 파고 
+WebSecurityConfig 클래스
+	import org.springframework.context.annotation.Configuration;
+	import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+	import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+	import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+	@Configuration
+	@EnableWebSecurity // 스프링 Security 지원을 가능하게 함
+	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+
+	http.authorizeRequests()
+	// 어떤 요청이든 '인증'
+	.anyRequest().authenticated()
+	.and()
+	// 로그인 기능 허용
+	.formLogin()
+	.defaultSuccessUrl("/")
+	.permitAll()
+	.and()
+	// 로그아웃 기능 허용
+	.logout()
+	.permitAll();
+	}
+	}
+===============================================
+댓글 입력 시에 누구의 댓글인지 증록을 요청한 회원정보 추가 필요
+회원 테이블을 보고 뭘 저장할지

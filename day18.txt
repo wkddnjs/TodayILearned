@@ -1,0 +1,10 @@
+오류 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource
+해결 defer-datasource-initialization: true
+
+오류: IllegalArgumentException: Failed to create query for method public abstract java.util.Optional com.sparta.week03_3nd_1.repository.UserRepository.findByPassword(java.lang.String)! Unable to locate Attribute  with the the given name [password] on this ManagedType [com.sparta.week03_3nd_1.domain.User]
+해결: password를 Password라고 써서 UserRepository에서 알아먹지 못함
+============
+토큰 생성
+필터에서 어떤 로직을 처리할 수 있는지(아직 컨트롤러 오기 전)
+	필터 안에서 토큰을 파싱할 수 있는지
+시큐리티 컨테스트에 현재 로그인 된 사용자의 권한을

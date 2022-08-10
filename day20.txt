@@ -1,0 +1,14 @@
+Id를 Member로 했을때
+ERROR 22860 --- [nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]
+ERROR 17276 --- [nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]
+
+Id를 Long으로 했을때
+ERROR 22188 --- [nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]
+조회 시 char 타입의 칼럼이 공백 또는 null 값을 가지고 있어 발생된 에러 케이스
+
+
+@restful한 스타일은?
+Restful한 스타일 
+@Restcontroller는  json형식의 데이터로 보내줌
+
+Ioc 빈 

@@ -1,1 +1,2 @@
 7일차 스타트!
+자바 getter satter 활용

@@ -1,0 +1,115 @@
+CRUD 만드는 순서
+
+기능 별 패키지를 만든다. 
+Domain
+Service
+controller
+
+
+Domain에는 repository와 Entity에 관한 클래스가 들어갈 것, 생성이나 업데이트 시 DTO도 필요하므로 만들어줌
+**DTO도 따로 만드셈
+***repository도 그냥 따로 파셈
+스프링에서 패키지 다르면 자동으로 임포트 해줌
+
+Service에는 Service클래스가,
+controller에는 controller클래스가 들어간다. 일단 클래스 다 만들어줌
+
+1. Entity가 될 테이블에 롬북 @Getter 임포트해줌 (별도의 선언없이도 게터 활용 가능)
+@Entity 임포트 해줌 (이 클래스는 Entity가 될 클래스임을 spring에게 알려줌)
+	Entity 선언이 되었으면 두가지가 필요함 (@Id / @NoArgsConstructor)
+		id는 프라이빗 키가 필요하기 때문에. 
+		변수에 private Long id 만들어주고 @GeneratedValue 임포트(아이디가 자동으로 할당받을 수 있게 / 전략은 strategy = GenerationType.AUTO)
+		@NoArgsConstructor 임포트로 생성자 없이 엔티티클래스 활용 가능
+
+		각 변수에 @Column 임포트 해줌 (타입은nullable = false/true) true는 굳이 안해도 됨
+
+2. DTO클래스에 Entity와 똑같은 변수를 선언해줌 - 그래야 뭐가 바뀌는지 알고 집어넣어주니까.
+여기도 @Getter 선언해줌 끝.
+
+3. repository는 인터페이스로 생성해줌 그리고 JpaRepository 상속받고 <Entity 이름, 프라이빗 키 타입>
+
+4. 이제 controller 패키지 속 controller 클래스 작업. controller가 controller임을 알 수 있도록 @RestController 임포트 ********* 여기서부터 controller ************* 여기서부터 controller ************* 여기서부터 controller *************
+	
+5. 생성부터 만든다. 
+@PostMapping 해주고 (라우터 길 파놓기)
+public 엔티티 이름 메소드 이름 (파라미터) {
+생성자 생성하고 (빵틀 빵 뉴 빵틀(파라미터))
+리턴 repository.save(빵)
+}
+
+근데 repository가 없어서 오류뜰꺼임. controller에서 변수로 repository를 final로 선언해줌 / 또 오류뜰꺼임 왜? final로 선언했으니까. @RequiredArgsConstructor 붙여줘. 이건 그냥 쌍이라고 생각하는 게 편함
+이제 파라미터 설정을 해 줄 것임. 생성된 데이터를 DTO를 통해 받아옴
+여기서 Entity 클래스에 또 작업 필요함 왜? DTO값을 넣어줘야 하니까. 
+
+Entity에 메소드 하나 만들것임
+public 엔티티이름(DTO) {
+this.변수1 = DTO.get변수1(); --게터
+this.변수2 = DTO.get변수2(); --게터
+...
+} 
+DTO로 생성된 값을 this를 통해 Entity 변수에 집어넣어줌.
+이게 생성 끝.
+
+6.조회 만든다
+@GetMapping 해주고 (라우터 길 파놓기)
+public (리스트값 반환할꺼니까)List<엔티티이름> 매서드 이름(파라미터) {
+리턴 repository.findAll();
+}
+이럼 끝
+
+7. 수정 만든다 (여기서 service씀)
+@PutMapping 해주고 (라우터 길 파놓기/ 여기는 /{id} 붙여야 함 다 수정할거 아니잖슴)
+public Long(아이디값으로 찾을꺼니까 롱으로 해줘) 매서드 이름(@PathVariable id, @RequestBody DTO) {
+return service.service 속 매서드(DTO)
+}
+이거 당연히 오류 뜸 왜? 지금 service는 텅 비어있잖씀. 그래서 서비스로 가줘야됨
+
+	service에 @Service 임포트 해줌 (나는 서비스다~)
+	매서드 먼저 작성
+
+	public Long 메서드이름(id, DTO) {
+	엔티티 엔티티 = repository.findById(id) orElseThrow(
+                () -> new IllegalArgumentException("아이디를 찾을 수 없습니다.")
+       	 );	
+	엔티티.메서드이름(DTO);
+	return id;	
+	}
+	아마 repository 못 쓸거임, 연결을 안해줬으니까. 
+	변수로 repository 선언
+	private final Repository repository;
+	final이니까 @RequiredArgsConstructor 위에 붙여야 됨
+	엔티티의 id값이랑 repository의 id값이랑 비교해서 같으면 변경된 DTO 넣어줘라~
+	그리고 해당 id 리턴
+	
+	이러면 Entity에도 바뀐 값이 들어가는 메서드가 있어야 함
+	이제 Entity에서 
+	public void update (DTO) {
+	this.변수1 = DTO.get변수1(); --게터
+	this.변수2 = DTO.get변수2(); --게터
+	}
+	매서드로 바뀐 값을 변수에 집어넣을 수 있게 구성.
+
+	이제 에러 안날껄?
+
+8. 삭제 만든다 딜리트는 쉬움
+@deleteMapping 해주고 (라우터 길 파놓기/ {id} 붙여야 함 마찬가지로 다 지울거 아니니)
+public Long 매서드 이름(@PathVariable id) {
+repository.deleteById(id);
+return id;
+}
+
+마지막으로 실행하는 클래스에 
+@SpringBootApplication
+@EnableJpaAuditing
+붙어있나 확인
+
+롬북 덕분에 어노테이션만 해줘도 임포트 자동으로 됨
+
+이게 crud
+	
+
+
+
+
+
+
