@@ -1,0 +1,9 @@
+테이블에서 변수 설정할 때 그냥 String으로 선언하면 varchar255까지 가니까, 긴거 아니라면 제한해주는 게 좋음
+래포클래스 null값
+
+Optional의 널체크를 다시 공부해라
+
+최상위 테이블을 간단하게 한 단어로 item > iteminfo
+
+timestamper는 포멧해서 써라
+

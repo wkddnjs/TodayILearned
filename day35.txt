@@ -1,0 +1,10 @@
+다시보기
+
+느슨한 결합력, 인터페이스, 의존성 주입(DI), 제어의 역전(IOC), 솔리드법칙
+servlet / jsp / mvc
+Jpa
+(중요)영속성 컨테스트(4-5) / 변경감지
+n+1 문제해결
+@Data
+@ToString
+@Value (beans.factory.annotation.)

@@ -1,0 +1,2 @@
+Java file outside of source root
+UnsatisfiedDependencyException // 카카오ID를 만들어놓지 않아서 빈이 생성이 안됐음

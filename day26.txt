@@ -1,0 +1,17 @@
+트랜잭션 은행예제
+@ExeptionHandler 한번에?
+@RestAdviceController
+ 
+JWT의 개념 
+header
+유효시간
+
+RestFul Api
+
+Comment와 리코멘트는 나눌 필요가 없다..?!
+
+@Transactional(readOnly = true)
+
+https://jeong-pro.tistory.com/231
+
+@RequestParam은?

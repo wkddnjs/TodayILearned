@@ -1,0 +1,34 @@
+https://www.youtube.com/watch?v=brE0tYOV9jQ&t=91s 읽어보기
+============================================
+***매핑 파보기
+@OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
+private Set<Comment> commentSet = new HashSet<>();
+
+1) fetch = FetchType.LAZY
+LAZY는 지연참조 / EAGER는 데이터를 뭉탱이로 보내기 때문에 중복이 일어날 수 있으나 LAZY는 하나하나 보내기 때문에 
+중복이 안 일어남 -  웬만하면 LAZY로 만드는 게 좋음
+
+2) mappedBy = "member" 
+두 개의 테이블 중 부모테이블이 되는 것은 = "member" 이다. 
+
+3) cascade = CascadeType.ALL
+선언된 테이블에서 데이터가 지워지면 부모 테이블의 매핑된 데이터도 지워진다(영향을 받는다.)
+
+4) Set<Comment> set은 중복되는 것을 제거(중복을 허용하지 않고 / 순서가 없음) - 인덱싱으로 값을 얻을 수 없다.
+List<Comment>는 순서가 중요하고 중복이 허용됨 
+
+
+5) new HashSet<>()
+이건 EAGER선언 했을 때 (뭉탱이로 가져오는) 데이터에서 중복이 일어날 수 있기 때문에,
+중복을 허용 안하겠다는 의미
+
+--------------------------------------------------------------------
+@ManyToOne
+
+============================================
+Optional 회복
+
+============================================
+순환오류 PostService와 LikeService간의 순환오류가 일어났는데, 
+PostService의 안 쓰는 private final LikeService likeService; 선언부를 제거해줬더니
+해결되었음 

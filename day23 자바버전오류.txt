@@ -1,0 +1,36 @@
+자바 버전 오류:
+Error : Cause: invalid source release: 11
+--------------------------------------
+
+1. Setting 수정
+
+1) Build, Execution, Deployment
+JRE: Use Project JDK -> 11
+
+2) Gradle
+Gradle JVM: JAVA_HOME -> 11
+
+3) Kotlin Compiler
+Target JVM version: 1.8 -> 11
+========================
+Error : A JNI error has occurred, please check your installation and try again
+--------------------------------------
+
+2. Project Structure 수정
+
+1) Project SDK: 1.8 -> 11
+
+해결완료
+
+========================
+Jpa
+**영속성 컨테스트(4-5) / 변경감지
+n+1 문제해결
+@Data
+@ToString
+@Value (beans.factory.annotation.)
+
+카카오 로그인 강제 로그인 처리까지
+
+
+

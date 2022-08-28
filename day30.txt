@@ -1,0 +1,36 @@
+인텔리J가 제시한 해결책
+singletonList
+
+Failed to add the foreign key constraint. Missing index for constraint 'FKopfxbwrd46nksmh4nws076hxc' in the referenced table 'item_info'
+
+OneToMany와 ManyToOne
+
+@Enumerated(value = EnumType.STRING) Enum값을 저장할 때, DB에는 스트링 값으로 넣어줘라
+
+
+오류
+Incorrect integer value: 'USER' for column 'role' at row 1 -> 해석) 잘못된 정수 값: 1행의 'role' 열에 대한 'USER'
+오류상황 : RDBS가 연결된 상태에서 Member 테이블에 role 칼럼을 추가한 상황 / 테이블 칼럼을 변경하고 저장하려 할 때 칼럼에서 뭔가 충돌이 있는 것 같음
+의문사항
+1. USER라는 단어가 어디서 나왔는가? 나는 테이블 이름을 Member로 써줬는데 -> Enum클래스에 USER / ADMIN으로 구분, 
+2. Enum클래스 값은 전부 String 임 / 근데 데이터베이스에 들어가 role을 확인해보니 role:int 라고 쓰여있음 
+-> 왜 나는 String이라고 선언했는데 int가 나온걸까 @Enumerated(value = EnumType.STRING)
+role 컬럼을 Enum으로 선언해 준 뒤 @Enumerated(value = EnumType.STRING)을 늦게 붙임, DB는 이미 int 형태의 role 을 가지고 있으므로
+내가 아무리 String값의 데이터를 집어넣어도 DB에서 받아들이지 못함
+
+DB에서 직접 컬럼 role을 삭제해 주고 @Enumerated(value = EnumType.STRING)가 적용된 상태의 role을 다시 생성해 줌
+
+
+================================
+협업할 때
+DTo값 제대로 확인하기 명세서랑 맞춰줘라
+
+
+================================
+트러블 슈팅
+
+언제 / 어디서 / 어떻게 발생했는지,
+
+어떤 상태에서 발생했는지,
+
+어떤 방법으로 해결했는지
