@@ -1,0 +1,42 @@
+Spring Security를 사용하다 보면 현재 세션 사용자의 정보를 알아야 하는 경우
+
+Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+if (authentication == null || AnonymousAuthenticationToken.class.
+                isAssignableFrom(authentication.getClass())) {
+            return null;
+        }
+return ((UserDetailsImpl) authentication.getPrincipal()).getMember();
+
+참고: http://chomman.github.io/blog/spring%20framework/spring-security%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9D%98-%EC%A0%95%EB%B3%B4%EB%A5%BC-%EC%B0%BE%EB%8A%94-%EB%B0%A9%EB%B2%95/
+
+소프트 딜리트 삭제
+도입 이유: 데이터베이스에 Delete 요청을 최소화 하기 위함
+문제 이유: 회원가입 탈퇴 로직 구현 시 데이터베이스 상의 데이터를 어떻게 처리할 것인지에 대한 방법론적 결정 필요
+
+해결방안
+1) 실제 데이터베이스 상의 데이터를 날리자
+2) 데이터베이스 속의 데이터를 실제로 삭제하지 말고 논리적 구조로 삭제시키자
+
+의견 조율: 데이터베이스에 지속적인 딜리트 요청은 데이터베이스에 부담을 가중시킴 
+삭제한 유저에 대한 정보가 추후에 필요할 수 있음
+
+의견 결정: 데이터베이스에 딜리트 요청을 최소화하기 위해 회원 탈퇴 시  탈퇴 여부만 체크하는 소프트딜리트 방법 채용
+
+깃 액션 채용
+
+도입이유: 프론트앤드와 통신하는 과정에서 백앤드 코드 수정에 따라 인스턴스 주소를 바꾸는 상황이 빈번하게 발생
+문제 이유: 백엔드 각자의 코드를 수정하는 과정에서 서로의 코드가 통일되지 않아 프론트앤드와의 기능 테스트 중 애로사항 발생(예시. A의 서버로 테스트 했을 땐 완료된 기능이었는데 B의 서버에서는 기능 오류가 났다)
+
+해결방안: 1) 깃 액션을 통해 특정 브랜치로 푸시할 때 수정한 코드를 빌드시켜서 인스턴스 주소를 교체하는 일이 없게 하자
+	2) 그냥 각자의 서버로 테스트 하여 완료되었으면 코드를 합치자
+의견 조율: 1) 테스트 마다 인스턴스 주소를 교체하면 프론트앤드에서 기능구현 테스트 중 혼란을 야기할 수 있음
+	2) 백엔드의 데이터베이스가 각자 다르기에 통신때마다 다른 데이터로 테스트하게 됨
+의견 결정: 깃 액션을 통해 백엔드의 코드병합을 용이하게 하고, 통일된 데이터베이스를 사용함으로써 프론트와의 테스트 시 발생할 수 있는 혼란을 줄이자   
+
+jwt참고
+https://escapefromcoding.tistory.com/255
+https://lemontia.tistory.com/1021
+https://samtao.tistory.com/65
+
+카카오 로그인 참고
+https://suyeoniii.tistory.com/79

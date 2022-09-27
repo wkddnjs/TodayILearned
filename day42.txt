@@ -1,0 +1,10 @@
+jpaRepository
+https://jobc.tistory.com/120
+https://ryan-han.com/post/dev/jpa_basics/
+
+오류
+No property 'orderBylikesDesc' found for type 'MakerPost'
+오타...likes->Likes 
+다른 like 쿼리문은 잘 돌아갔는데 유독 얘만 오류가 난 걸 생각했으면 진짜 빨리 풀었을 텐데
+
+No converter found capable of converting from type [java.lang.Long] to type [com.example.rhythme_backend.domain.post.MakerPost]

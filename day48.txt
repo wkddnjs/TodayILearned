@@ -1,0 +1,9 @@
+https://jojoldu.tistory.com/235
+https://jforj.tistory.com/90
+
+
+트러블 슈팅 테이블에 널값이 있으면 안되는 이유 : 리스트로 참조할 때 널값이 같이 딸려와서 
+리스트 안에 들어가니까 널 포인트 익셉션이 난다
+
+https://velog.io/@juna-dev/%ED%95%B4%EC%8B%9C%ED%83%9C%EA%B7%B8-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-9ak4xocihh
+https://bmangrok.tistory.com/m/entry/Mybatis-%ED%95%B4%EC%89%AC%ED%83%9C%EA%B7%B8-%EA%B2%80%EC%83%89-%EC%BF%BC%EB%A6%AC-%EC%A7%9C%EA%B8%B0

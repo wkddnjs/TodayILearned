@@ -1,0 +1,39 @@
+UserDetailsServiceImpl, UserDetailsImpl, TokenProvider 의 findByEmail
+=======================
+오늘의 오류
+
+1. GoogleOauth 무한루프 오류
+매서드를 이관하면서 사용하지 않은 
+private final GoogleOauth googleOauth;
+private final HttpServletResponse response; 선언 제거
+
+2. 빈 생성 오류
+매서드를 이관하면서 만든 KakaoOauth 클래스를 찾지 못하는 문제
+required a bean of type 'com.example.rhythme_backend.service.kakaoLogin.KakaoOauth' that could not be found.
+
+@ComponentScan(basePackages = {"찾지 못하는 패키지루트"})
+일단 나는 @Component 붙여서 해결 -> 
+
+1) @Component 어노테이션을 이용하면 Bean Configuration 파일에 Bean을 따로 등록하지 않아도 사용할 수 있다.
+빈 등록자체를 빈 클래스 자체에다가 할 수 있다는 의미이다.
+
+2) @Component 는 Spring에서 관리되는 객체임을 표시하기 위해 사용하는 가장 기본적인 annotation입니다.
+즉, scan-auto-detection과 dependency injection을 사용하기 위해서 스프링 컨테이너에 등록하는, 가장 기본 어노테이션입니다.
+따라서 컴포넌트 클래스들에 포괄적으로@Component를 붙일 수 있지만, @Repository, @Service, @Controller의 역할을 명시적으로 구분해주기 위해 각자 분리해서 사용합니다
+->일단 내가 만든 KakaoOauth클래스는 @Repository, @Service, @Controller의 역할을 하지 않기에(굳이 따지면, @Service이긴 하지만 이미 @Service가 있으니까)
+@Component를 선언
+
+참고 : https://programmingrecoding.tistory.com/13
+https://velog.io/@_koiil/Spring-Component%EC%99%80-Repository-Service-Controller
+
+<Optional> Null값 처리
+Optional로 Null값을 알리는 습관이 안좋다는 것을 지적받아서, 이 부분에 대해 다시 공부해보려 한다.
+
+참고: https://ecsimsw.tistory.com/entry/%EC%9E%91%EC%84%B1-%EC%A4%91-Optional%EA%B3%BC-null
+https://tecoble.techcourse.co.kr/post/2021-06-20-optional-vs-null/
+
+NullPointException을 방어하기 위해 if문을 남발하거나, return문을 남발하는 것은 코드의 가독성과 유지보수 측면에서 굉장한 마이너스를 불러온다.
+따라서, 이러한 방식을 지양하는 작업이 필요. 애초에 Optional은 이런 현상을 방지하기 위해 java8에 새로 도입된 클래스이다.
+
+<Optional은, 직접 다루기에 위험하고 까다로운 null을 담을 수 있는 특수한 그릇>
+

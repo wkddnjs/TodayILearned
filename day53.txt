@@ -1,0 +1,12 @@
+Parameter value [com.example.rhythme_backend.domain.Member@1ca8628b] did not match expected type
+deleteAllByMakerPost -> deleteAllByMember
+
+TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing
+->
+if (makerPlayListRepository.existsByMakerPost(makerPost)) {
+                return new ResponseEntity<>(Message.fail("ALREADY_EXIST","이미 플레이리스트에 존재합니다."),HttpStatus.BAD_REQUEST);
+            } 
+의 makerPost를 참조하는 과정에서  Singer 포시션으로 데이터가 들어올 경우, makerPost의 값은 아예 참조할 수 없다. -> 분기 속으로 집어넣어 줌
+-> 중복이 가능해야 해서, 해당 로직은 폐기
+
+기본키 생성 전략

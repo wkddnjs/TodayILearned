@@ -1,0 +1,14 @@
+통신 시 발생하는 오류
+Cannot delete or update a parent row: a foreign key constraint fails -> 외래키 참조에 의해 테이블에서 삭제가 되지 않는 경우
+
+Delete 시 에러 (Api 교체)
+참고: https://m.blog.naver.com/lewisel/221829301069
+
+http://localhost:8080/auth/post/18?position=Maker
+http://localhost:8080/auth/post?position=Maker/18 이거 안됨 RequestParam값은 주소의 맨 뒤로 고정
+
+follow false 찍으면 안 내려감 -> @Transactional을 쓴다고 해서 업데이트 된 값이 다 반영되는 것은 아닌 듯
+memberRepository.save(following); 같이 따로 세이브 해 줌 (같은 if 안에 없어서 그런가)
+
+리드미 템플릿
+https://github.com/topics/profile-readme

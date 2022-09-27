@@ -1,0 +1,10 @@
+@Transactional(readOnly=true) 이 없으면 영속성 컨택스트가 만들어지지 않음
+
+//    public String getSubject(String token) {
+//        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
+//    }
+
+//    @Transactional
+//    public Member validateMembers(HttpServletRequest request) {
+//        return tokenProvider.getMemberFromAuthentication();
+//    }

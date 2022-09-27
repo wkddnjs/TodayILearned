@@ -1,0 +1,23 @@
+
+메모리
+
+sudo apt update
+sudo apt install ruby-full
+sudo apt install wget
+
+cd /home/ubuntu
+
+sudo apt install awscli
+aws s3 cp s3://aws-codedeploy-ap-northeast-2/latest/install . —region ap-northeast-2
+
+chmod +x ./install
+sudo ./install auto
+
+# 이걸로 설치 확인을 할 수 있다.
+sudo service codedeploy-agent status
+
+깃액션 - 코드 디플로이
+https://www.sunny-son.space/AWS/Github%20Action%20CICD/
+
+ec2메모리 부족할 때
+https://sundries-in-myidea.tistory.com/102

@@ -1,0 +1,25 @@
+액세스 토큰으로 통신하기
+
+1. 액세스 토큰에서 Bearer 떼어내기
+프런트에서 날아오는 토큰을 Access로 한정했기 때문에, Access토큰에 대한 인증 처리를 해야 함
+
+String[] BearerSplit = request.getHeader("Authorization").split(" ");
+request의 Header에 담긴 정보 중에 Authorization에 담긴 값을 공백을 기준으로 나누기
+액세스 토큰의 형식이 Bearer as09d7a98fas....로 통일되어 있어서, as09d7a98fas....값을 사용하기 위해
+split으로 분리해 줌
+
+System.out.println("베어러 0번째:" + BearerSplit[0]);
+System.out.println("베어러 1번째:"+ BearerSplit[1]);
+찍어보면 확인 가능
+
+BearerSplit[1] 값을  활용해야 하니, 이 값을 String accessToken 이라는 변수에 담아줌
+그럼 기존에 있던 validateToken매서드 활용가능
+
+쿼리 Dsl로 한번 테스트
+문제가 되는 부분을 슬랙에 개인 질문
+
+Unknown column 'y' in 'field list'
+1. DB에 해당 칼럼이 없는 경우
+2. 데이터가 ''으로 묶여있지 않은 경우
+
+https://velog.io/@jongleee/220902

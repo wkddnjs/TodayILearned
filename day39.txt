@@ -1,0 +1,5 @@
+DB의 멤버에 데이터가 있으면 google로그인이 안됨
+오류 : NonUniqueResultException: query did not return a unique result: 2] with root cause
+
+구글로그인 깃 참고
+https://github.com/makecake04/makecake_BE/blob/master/src/main/java/com/project/makecake/service/GoogleLoginService.java

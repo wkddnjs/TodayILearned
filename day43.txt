@@ -1,0 +1,21 @@
+메인 페이지 Get
+No converter found capable of converting from 
+type [java.lang.Long] to type [com.example.rhythme_backend.domain.post.MakerPost]
+
+닉네임이 바뀌면 토큰을 재 발급 해야 하는가
+
+프로필 소개글 디폴트 (완)
+
+회원탈퇴 하려면 makerpost, makerpost tag, follower 다 지워줘야 함 
+지우는 순서
+member_hash_tag
+hash_tag
+refresh_token
+follow
+like_table
+maker_post_tag
+tag
+maker_post
+singer_post_tag
+tag
+singer_post

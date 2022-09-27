@@ -1,0 +1,39 @@
+트러블 슈팅
+
+멤버 id값을 어디에서 가져올까?
+
+1) getHeader를 통해 헤더에서 "id" 인 값을 가져오려 했으나, 헤더에 id정보가 없어서 실패.
+2) getParameter를 통해 param에 아이디값을 입력하기
+오류 java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row
+refresh token이랑 member랑 참조되어 생긴 문제
+refresh token먼저 지워준다.
+
+3) api명세서를 제대로 안 본 잘못;; request로 email값이 들어온다.
+findbyEmail로 해당 이메일값의 멤버를 찾은 다음 id를 가져온다.
+
+오류
+참고:https://91ms.tistory.com/29
+Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot construct instance of `com.example.rhythme_backend.dto.requestDto.ResignRequestDto` 
+(although at least one Creator exists): cannot deserialize from Object value (no delegate- or property-based Creator); 
+nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of `com.example.rhythme_backend.dto.requestDto.ResignRequestDto` 
+(although at least one Creator exists): cannot deserialize from Object value (no delegate- or property-based Creator)<EOL> 
+at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 2, column: 5]]
+
+ResignRequestDto에 대한 기본 생성자가 없어 생기는 오류->@builder 해놨는데 왜 안생겼지?
+@builder 지워서 해결
+
+
+카카오 API code가 오질 않음
+에러코드 : 없음
+이유 security config에서 카카오URL을 막고 있었음 
+해결: 카카오 URL에 대한 security 를 무시함
+
+
+구글 로그인
+참고: https://gdtbgl93.tistory.com/182
+
+이메일인증
+https://moonong.tistory.com/45
+
+
+

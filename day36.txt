@@ -1,0 +1,5 @@
+Unknown database 'DB명'
+rhythme-db.csougwr68qci.ap-northeast-2.rds.amazonaws.com:3306/RhythMeProject
+뒤에 DB명 잘못써줬음 'RhythMeProject' 로 써야 함
+
+logout 시 리프레시 토큰 날리는법 찾아보기 
