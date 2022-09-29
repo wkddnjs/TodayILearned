@@ -4,3 +4,13 @@
 
 스토어 - 클라이언트에 의해 관리가 됨 (사용자에 의해 관리되는 영역)
 컬랙션 - 서버에 의해 관리되는 영역
+
+오늘의 오류
+Parameter value [1] did not match expected type [com.example.rhythme_backend.domain.Member (n/a)]
+Repository에서 예상하는 파라미터 값은 member인데 나는 Long 값을 던져서 발생한 오류
+
+object references an unsaved transient instance - save the transient instance before flushing: com.example.rhythme_backend.domain.post.MakerPost
+객체가 저장되지 않은 임시 인스턴스를 참조합니다 - 플러시하기 전에 임시 인스턴스를 저장합니다:
+
+메이커 포스트에 정렬된 값을 담는 과정에서 메이커 포스트 안의 외래키인 member 역시 참조하게 했다. 
+이 상태에서 로직을 수행하다가 existsByMakerPost를 만났을 때 member값을 찾을 수 없어서 발생한 에러이다
