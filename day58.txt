@@ -1,0 +1,17 @@
+스프링 빈 이란
+https://melonicedlatte.com/2021/07/11/232800.html
+
+구글 애널리틱스
+https://cucat.tistory.com/entry/%EA%B5%AC%EA%B8%80-%EC%95%A0%EB%84%90%EB%A6%AC%ED%8B%B1%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%B2%95%EC%9D%80-5%EA%B0%80%EC%A7%80%EB%A7%8C-%EA%B8%B0%EC%96%B5%ED%95%98%EC%9E%90
+
+리드미 수정사항
+베스트 송 - 흰색글씨 수정
+로그인 시 메이커 작품 더보기 들어가서 새로고침 하면 작품 날라감
+검색에 멤버 검색하면 검색은 되는데 검색결과가 없다는 창이 뜸
+오디오 파일이 길면 글씨가 겹쳐보이는 현상 (...으로 줄일 수 있는지)
+콜라보, 싱어, 메이커에 대한 상세한 설명 필요
+
+오늘의 오류
+Mixed Content: The page at '<URL>' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint '<URL>'. This request has been blocked; the content must be served over HTTPS.
+프론트와 통신하는 과정에서 암호화된 https 기반의 사이트에서 http로 요청을 보내 발생한 에러
+출처: https://wellsw.tistory.com/34 
