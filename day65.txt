@@ -1,0 +1,12 @@
+4. Spring 과 Spring Boot의 차이는?
+
+Spring Boot makes it easy to create stand-alone, 
+production-grade Spring based Applications that you can "just run".
+spring boot 2.74 공식문서에는 위와 같이 적혀있다. 스프링 부트는 단독적이고, 상용화 수준의, 스프링 기반 애플리케이션을 단지 실행할 수 있을 정도로 쉽게 만들 수 있다는 의미이다. 개발자 입장에서 더 빠르고 효율적인 프로그램을 개발할 수 있도록 지원해준다. 
+
+Dependency
+spring의 경우 dependency를 설정할 때 설정 파일이 매우 길며, 모든 dependency에 대한 버전 관리도 하나하나 세팅해 줘야 한다. 하지만 스프링부트의 경우 ﻿
+
+출처:
+1.https://programforlife.tistory.com/68
+2.
